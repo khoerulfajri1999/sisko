@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { STATUS } from '../../utils/status';
 import {Loader} from '../../components/Loader/Loader';
 import {ProductList} from '../../components/ProductList/ProductList';
-import { fetchAsyncSearchProduct, getSearchProducts, setSearchTerm, getSearchProductsStatus, clearSearch } from '../../store/searchSlice';
+import { fetchAsyncSearchProduct, getSearchProducts, getSearchProductsStatus, clearSearch } from '../../store/searchSlice';
 
 export const SearchPage = () => {
   const dispatch = useDispatch();
@@ -19,6 +19,18 @@ export const SearchPage = () => {
   }, [searchTerm]);
 
   if(searchProducts.length === 0){
+    return (
+      <div className='container' style = {{
+        minHeight: "70vh"
+      }}>
+        <div className='fw-5 text-danger py-5'>
+          <h3>Tidak ada produk yang ditemukan.</h3>
+        </div>
+      </div>
+    )
+  }
+
+  if(searchTerm === null){
     return (
       <div className='container' style = {{
         minHeight: "70vh"

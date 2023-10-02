@@ -28,6 +28,8 @@ function App() {
             <Route path = "/cart/checkout" element = {<Checkout />} />
             {/* searched products */}
             <Route path = "/search/:searchTerm" element = {<SearchPage />} />
+            {/* default searched products */}
+            <Route path = "/search/" element = {<HomePage />} />
           </Routes>
 
           <Footer />
